@@ -1,4 +1,4 @@
-mkd# config.py
+# config.py
 
 class Config(object):
     """
