@@ -10,3 +10,5 @@ before i run run.py
 make sure your cmd is switched to bash
 run this >export FLASK_CONFIG=development
 then this >export FLASK_APP=run.py
+starts virtual enviroment
+. venv/bin/activate

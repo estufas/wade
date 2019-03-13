@@ -40,20 +40,12 @@ def scrape_aa_meetings():
     rows = soup.find_all('tr')
     for row in rows:          # Print all occurrences
         print(row)
-    # print (meeting_table)
-
-    # textContent = []
-    # for i in range(0, 10):
-    #     paragraphs = soup.find_all("a")[i].text
-    #     textContent.append(paragraphs)
-
-    # Take out the <div> of name and get its value
-    # name_box = soup.select("td.name")
-    # test = name_box.a
 
 
-    # print ('ok')
-    # print (textContent)
+    rows = soup.find_all('tr')
+    for row in rows:          # Print all occurrences
+        print('help', row.get_text())
+
 
 
 def create_app(config_name):
@@ -64,7 +56,9 @@ def create_app(config_name):
 
     @app.route('/meetings', methods=['GET'])
     def get_tasks():
-        print ('api')
+
+        # print ('api')
+
         return jsonify({'tasks': tasks})
 
     @app.route('/')
