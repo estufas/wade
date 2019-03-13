@@ -1,0 +1,1 @@
+use backslashes when running venv\scripts\activate
