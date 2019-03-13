@@ -1,1 +1,12 @@
-use backslashes when running venv\scripts\activate
+$$$$ IAN COMMANDS $$$
+activate venv
+use backslashes when running in cmd >venv\scripts\activate
+if using bash use >source venv/scripts/activate
+
+if stu puts in a new module run this:
+>pip install -r requirements.txt
+
+before i run run.py
+make sure your cmd is switched to bash
+run this >export FLASK_CONFIG=development
+then this >export FLASK_APP=run.py

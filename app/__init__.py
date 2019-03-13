@@ -33,14 +33,13 @@ tasks = [
 ]
 
 def scrape_aa_meetings():
-    page = requests.get('https://lacoaa.org/meetings/?tsml-day=4&tsml-distance=5&tsml-mode=location&tsml-query=90042')
-
-    soup = BeautifulSoup(page.content, 'html.parser')
+    page = requests.get('https://lacoaa.org/meetings/?tsml-day=any')
+    soup = BeautifulSoup(page.text, 'html.parser')
     # meeting_table = soup.findAll('div',attrs={"class":"row"})
     # meetings = meeting_table.find_all('a')
     rows = soup.find_all('tr')
     for row in rows:          # Print all occurrences
-        print(row.get_text())
+        print(row)
     # print (meeting_table)
 
     # textContent = []
@@ -54,7 +53,7 @@ def scrape_aa_meetings():
 
 
     # print ('ok')
-    print (textContent)
+    # print (textContent)
 
 
 def create_app(config_name):
@@ -66,11 +65,11 @@ def create_app(config_name):
     @app.route('/meetings', methods=['GET'])
     def get_tasks():
         print ('api')
-        scrape_aa_meetings()
         return jsonify({'tasks': tasks})
 
     @app.route('/')
     def hello_world():
+        scrape_aa_meetings()
         return 'Hello, Worrld!'
 
     return app
