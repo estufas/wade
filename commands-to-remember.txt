@@ -6,6 +6,8 @@ if using bash use >source venv/scripts/activate
 if stu puts in a new module run this:
 >pip install -r requirements.txt
 
+open chromeand type localhost:5000
+
 before i run run.py
 make sure your cmd is switched to bash
 run this >export FLASK_CONFIG=development
