@@ -17,17 +17,6 @@ from config import app_config
 # db variable initialization
 db = SQLAlchemy()
 
-# Collect first page of artists’ list
-
-
-# name = name_box.text.strip() # strip() is used to remove starting and trailing
-
-
-# get the index price
-# price_box = soup.find(‘div’, attrs={‘class’:’price’})
-# price = price_box.text
-# print price
-
 tasks = [
     {
         'id': 1,
@@ -46,19 +35,26 @@ tasks = [
 def scrape_aa_meetings():
     page = requests.get('https://lacoaa.org/meetings/?tsml-day=4&tsml-distance=5&tsml-mode=location&tsml-query=90042')
 
-    # # query the website and return the html to the variable ‘page’
-    # page = urllib2.urlopen(quote_page)
+    soup = BeautifulSoup(page.content, 'html.parser')
+    # meeting_table = soup.findAll('div',attrs={"class":"row"})
+    # meetings = meeting_table.find_all('a')
+    rows = soup.find_all('tr')
+    for row in rows:          # Print all occurrences
+        print(row.get_text())
+    # print (meeting_table)
 
-    # parse the html using beautiful soup and store in variable `soup`
-    pdb.set_trace()
-    soup = BeautifulSoup(page.text, 'html.parser')
+    # textContent = []
+    # for i in range(0, 10):
+    #     paragraphs = soup.find_all("a")[i].text
+    #     textContent.append(paragraphs)
 
     # Take out the <div> of name and get its value
-    name_box = soup.find(id='meetings_tbody')
-    test = soup.find_all('a')
+    # name_box = soup.select("td.name")
+    # test = name_box.a
+
 
     # print ('ok')
-    print (test)
+    print (textContent)
 
 
 def create_app(config_name):
