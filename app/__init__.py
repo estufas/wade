@@ -3,9 +3,12 @@
 # third-party imports
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_pymongo import PyMongo
 from flask import Flask, jsonify
 import pdb
-# import libraries
+import json
+import os 
+from bson.objectid import ObjectId# import libraries
 # import urllib2
 import requests
 
@@ -13,9 +16,11 @@ from bs4 import BeautifulSoup
 
 # local imports
 from config import app_config
-
+# client = pymongo.MongoClient("mongodb+srv://dbUser:<ADvTSJkx6pi3hcN>@wade-zd2os.mongodb.net/test?retryWrites=true")
+# db = client.test
 # db variable initialization
-db = SQLAlchemy()
+# db = SQLAlchemy()
+
 
 tasks = [
     {
@@ -40,6 +45,7 @@ def scrape_aa_meetings():
     rows = soup.find_all('tr')
     for row in rows:          # Print all occurrences
         print(row)
+    return rows
 
 
     rows = soup.find_all('tr')
@@ -52,18 +58,20 @@ def create_app(config_name):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(app_config[config_name])
     app.config.from_pyfile('config.py')
-    db.init_app(app)
+    app.config['mongodb+srv://dbUser:<ADvTSJkx6pi3hcN>@wade-zd2os.mongodb.net/test?retryWrites=true'] = os.environ.get('DB')
+    mongo = PyMongo(app)
 
     @app.route('/meetings', methods=['GET'])
     def get_tasks():
-
+        meetings = scrape_aa_meetings()
         # print ('api')
 
         return jsonify({'tasks': tasks})
 
     @app.route('/')
     def hello_world():
-        scrape_aa_meetings()
-        return 'Hello, Worrld!'
+        meetings = scrape_aa_meetings()
+        return json.dumps({'results': meetings})
+        
 
     return app
