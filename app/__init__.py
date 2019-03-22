@@ -42,7 +42,7 @@ def scrape_aa_meetings():
     rows = soup.find_all('tr')
     # for row in rows:          # Print all occurrences
     #     print('help', row.get_text())
-    print(len(rows))
+    # return rows
 
 
 
@@ -58,7 +58,7 @@ def create_app(config_name):
     @app.route('/meetings', methods=['GET'])
     def get_tasks():
         # print ('api')
-        meetings = scrape_aa_meetings()
+        # meetings = scrape_aa_meetings()
         return jsonify({'tasks': tasks})
 
     @app.route('/')
