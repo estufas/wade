@@ -6,7 +6,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, jsonify
 import pdb
-import attr
+# import attr
 # import libraries
 # import urllib2
 import requests
@@ -36,13 +36,13 @@ tasks = [
         'done': False
     }
 ]
-@attr.s(slots=True, kw_only=True)
-class TestObject(object):
-    time = attr.ib()
-    name = attr.ib()
-    location = attr.ib()
-    region = attr.ib()
-    type = attr.ib()
+# @attr.s(slots=True, kw_only=True)
+# class TestObject(object):
+#     time = attr.ib()
+#     name = attr.ib()
+#     location = attr.ib()
+#     region = attr.ib()
+#     type = attr.ib()
 
 big_list = []
 
