@@ -6,4 +6,5 @@ echo "Hello World"
 
 export FLASK_CONFIG=development
 export FLASK_APP=run.py
+# python run.py
 echo "added flask config and activate venv"
