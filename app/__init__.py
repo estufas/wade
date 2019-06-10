@@ -61,17 +61,14 @@ def create_app(config_name):
     app.config['mongodb+srv://dbUser:<ADvTSJkx6pi3hcN>@wade-zd2os.mongodb.net/test?retryWrites=true'] = os.environ.get('DB')
     mongo = PyMongo(app)
 
-    @app.route('/meetings', methods=['GET'])
+    @app.route('/meetings')
     def get_tasks():
         meetings = scrape_aa_meetings()
-        # print ('api')
-
         return jsonify({'tasks': tasks})
 
     @app.route('/')
     def hello_world():
-        meetings = scrape_aa_meetings()
-        return json.dumps({'results': meetings})
+        return "hello world"
         
 
     return app
