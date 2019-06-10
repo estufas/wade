@@ -11,5 +11,5 @@ open chromeand type localhost:5000
 before i run run.py
 run this >export FLASK_CONFIG=development
 then this >export FLASK_APP=run.py
-starts virtual enviroment
-. venv/bin/activate
+
+Mongodb password: ADvTSJkx6pi3hcN
