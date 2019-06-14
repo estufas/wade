@@ -17,6 +17,7 @@ from flask_pymongo import PyMongo
 from bs4 import BeautifulSoup
 
 # local imports
+from config import DevelopmentConfig
 from config import app_config
 
 # db variable initialization
@@ -73,7 +74,7 @@ def create_app(config_name):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(app_config[config_name])
     app.config.from_pyfile('config.py')
-    app.config["MONGO_URI"] = "mongodb+srv://dbUser:<ADvTSJkx6pi3hcN>@wade-zd2os.mongodb.net/test?retryWrites=true"
+    app.config["MONGO_URI"] = DevelopmentConfig.MONGO_URI
     mongo = PyMongo(app)
     print(mongo)
     # db.init_app(app)
